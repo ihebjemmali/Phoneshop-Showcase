@@ -2,89 +2,222 @@ body {
   background-color: #e0f7fa;
   color: #333;
   padding: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
   background-color: #ffffff;
   padding: 20px;
   border: 2px solid #00acc1;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0, 1);
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
+
 h1 {
-  margin-bottom: 20px;
-  font-size: 38px;
+  margin-bottom: 30px;
+  font-size: 42px;
   color: #00796b;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 .form-container {
-  margin-bottom: 20px;
-  padding: 15px;
+  margin-bottom: 30px;
+  padding: 25px;
   background-color: #ffffff;
   border: 2px solid #004d40;
-  border-radius: 8px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
+
 h2 {
-  margin-bottom: 15px;
-  font-size: 28px;
+  margin-bottom: 20px;
+  font-size: 32px;
   color: #004d40;
 }
+
 label {
   display: block;
-  margin: 8px 0;
-  font-weight: bold;
+  margin: 12px 0 8px;
+  font-weight: 600;
   text-align: left;
   font-size: 18px;
   color: #00796b;
 }
-input {
+
+input,
+select {
   width: 100%;
-  padding: 8px;
-  margin-bottom: 12px;
-  border: 1px solid #00796b;
-  border-radius: 4px;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 2px solid #00796b;
+  border-radius: 8px;
   font-size: 16px;
+  transition: all 0.3s ease;
 }
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #004d40;
+  box-shadow: 0 0 0 3px rgba(0, 121, 107, 0.2);
+}
+
 button {
-  padding: 10px 16px;
-  margin-top: 8px;
+  padding: 12px 24px;
+  margin: 6px;
   background-color: #00796b;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
+
 button:hover {
   background-color: #004d40;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+button.delete-btn {
+  background-color: #d32f2f;
+}
+
+button.delete-btn:hover {
+  background-color: #b71c1c;
+}
+
+button.edit-btn {
+  background-color: #1976d2;
+}
+
+button.edit-btn:hover {
+  background-color: #0d47a1;
+}
+
 #item-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  margin-top: 20px;
+  gap: 25px;
+  margin-top: 30px;
 }
+
 .item {
-  width: 23%;
-  border: 1px solid #00796b;
-  padding: 15px;
-  margin-bottom: 15px;
+  width: calc(25% - 25px);
+  border: none;
+  padding: 20px;
   background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0, 1);
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
+
+.item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
 .item-image {
   width: 100%;
-  height: auto;
-  margin-bottom: 10px;
+  height: 220px;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 h3 {
-  font-size: 28px;
-  margin-bottom: 8px;
+  font-size: 22px;
+  margin-bottom: 12px;
   color: #00796b;
 }
+
 p {
-  font-size: 18px;
-  margin: 4px 0;
+  font-size: 16px;
+  margin: 8px 0;
   color: #004d40;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #004d40;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.modal-header {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.modal-footer {
+  margin-top: 20px;
+  text-align: right;
+}
+
+@media (max-width: 1200px) {
+  .item {
+    width: calc(33.33% - 25px);
+  }
+}
+
+@media (max-width: 900px) {
+  .item {
+    width: calc(50% - 25px);
+  }
+}
+
+@media (max-width: 600px) {
+  .item {
+    width: 100%;
+  }
+
+  .modal {
+    width: 95%;
+    padding: 20px;
+  }
 }

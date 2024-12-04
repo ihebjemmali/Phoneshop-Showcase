@@ -5,33 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Smartphone Showcase</title>
     <link rel="stylesheet" href="styles.css" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
   <body>
     <div class="container">
       <h1>Smartphone Showcase</h1>
+
       <div class="form-container">
-        <h2>Manage Smartphone Catalog</h2>
-        <label for="item-name">Name :</label>
-        <input type="text" id="item-name" placeholder="Enter smartphone name" />
-        <label for="item-price">Price :</label>
-        <input type="number" id="item-price" placeholder="Enter price" />
-        <label for="item-quantity">Quantity :</label>
-        <input type="number" id="item-quantity" placeholder="Enter quantity" />
-        <label for="item-state">State :</label>
-        <input
-          type="text"
-          id="item-state"
-          placeholder="Enter state (New/Used)"
-        />
-        <label for="item-image">Image URL :</label>
-        <input type="text" id="item-image" placeholder="Enter image URL" />
-        <button id="add-item">Add New Smartphone</button>
-        <button id="remove-item">Delete Smartphone</button>
-        <button id="update-item">Update Smartphone Details</button>
+        <h2>Add New Smartphone</h2>
+        <form id="item-form">
+          <label for="item-name">Name:</label>
+          <input type="text" id="item-name" required />
+
+          <label for="item-price">Price:</label>
+          <input type="number" id="item-price" step="0.01" required />
+
+          <label for="item-quantity">Quantity:</label>
+          <input type="number" id="item-quantity" required />
+
+          <label for="item-state">State:</label>
+          <select id="item-state" required>
+            <option value="New">New</option>
+            <option value="Used">Used</option>
+          </select>
+
+          <label for="item-image">Image URL:</label>
+          <input type="text" id="item-image" required />
+
+          <button type="submit" id="add-item">Add Smartphone</button>
+        </form>
       </div>
-      <div id="item-list" class="item-list"></div>
+
+      <div id="item-list"></div>
     </div>
+
+    <!-- Edit Modal -->
+    <div class="modal-overlay" id="edit-modal">
+      <div class="modal">
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <div class="modal-header">
+          <h2>Edit Smartphone</h2>
+        </div>
+        <form id="edit-form">
+          <label for="edit-name">Name:</label>
+          <input type="text" id="edit-name" required />
+
+          <label for="edit-price">Price:</label>
+          <input type="number" id="edit-price" step="0.01" required />
+
+          <label for="edit-quantity">Quantity:</label>
+          <input type="number" id="edit-quantity" required />
+
+          <label for="edit-state">State:</label>
+          <select id="edit-state" required>
+            <option value="New">New</option>
+            <option value="Used">Used</option>
+          </select>
+
+          <label for="edit-image">Image URL:</label>
+          <input type="text" id="edit-image" required />
+
+          <div class="modal-footer">
+            <button type="button" onclick="closeModal()">Cancel</button>
+            <button type="submit" id="update-btn">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="main.js"></script>
   </body>
 </html>
